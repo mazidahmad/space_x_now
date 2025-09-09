@@ -1,0 +1,19 @@
+flavors:
+  prod:
+    app:
+      name: "SpaceX Now"
+      icon: "assets/images/logo/app-logo.png"
+
+    android:
+      applicationId: "com.mvzd.space-x-now"  
+    ios:
+      bundleId: "com.mvzd.space-x-now"
+  dev:
+    app:
+      name: "SpaceX Now (Dev)"
+    icon: "assets/images/logo/app-logo-dev.png"
+  
+    android:
+      applicationId: "com.mvzd.space-x-now.dev"
+    ios:
+      bundleId: "com.mvzd.space-x-now.dev"

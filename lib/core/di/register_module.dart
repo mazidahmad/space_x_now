@@ -1,0 +1,17 @@
+import 'package:injectable/injectable.dart';
+import 'package:logger/logger.dart';
+
+import '../modules/http_module.dart';
+import '../services/global_service.dart';
+
+@module
+abstract class RegisterModule {
+  @Singleton()
+  Logger get logger => Logger(printer: SimplePrinter());
+
+  @LazySingleton()
+  HttpModule get httpModule => HttpModule();
+
+  @LazySingleton()
+  GlobalService get globalService => GlobalService();
+}
