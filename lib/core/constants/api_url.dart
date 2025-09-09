@@ -1,127 +1,72 @@
 class ApiUrl {
-  static const String version = '/v1';
-  static const String version2 = '/v2';
-  static const String mosy = '$version/mosy';
-  static const String mosyV2 = '$version2/mosy';
+  static const String v4 = "/v4";
+  static const String v5 = "/v5";
 
-  // Company
-  static const String companies = '/companies';
-  static const String verifyCompany = '$companies/verify-access';
-  static String verifyCompanyCode(String code) =>
-      '$verifyCompany/$code/wemind_mosy';
+  // ================= LAUNCHES ================
+  // V4
+  static const String launchesV4 = "$v4/launches";
+  static const String launchesV4Next = "$launchesV4/next";
+  static const String launchesV4Latest = "$launchesV4/latest";
+  static const String launchesV4Past = "$launchesV4/past";
+  static const String launchesV4Upcoming = "$launchesV4/upcoming";
+  static const String launchesV4Query = "$launchesV4/query";
 
-  // Accounts
-  static const String accounts = '$version/accounts';
-  static const String signIn = '$accounts/sign-in';
-  static const String signUp = '$accounts/sign-up';
-  static const String verifyAccount = '$accounts/verify';
-  static const String verifyOtp = '$verifyAccount/otp';
-  static const String verifyEmailWithOTP = '$verifyOtp/email';
-  static const String otp = '$accounts/otp';
-  static const String otpCognito = '$otp/cognito';
-  static const String otpVerify = '$otp/verify';
-  static const String me = '$accounts/me';
-  static const String refreshToken = '$accounts/refresh-token';
-  static const String changePassword = '$me/change-password';
+  // V5
+  static const String launchesV5 = "$v5/launches";
+  static const String launchesV5Next = "$launchesV5/next";
+  static const String launchesV5Latest = "$launchesV5/latest";
+  static const String launchesV5Past = "$launchesV5/past";
+  static const String launchesV5Upcoming = "$launchesV5/upcoming";
+  static const String launchesV5Query = "$launchesV5/query";
 
-  // Therapist
-  static const String therapists = '/therapists';
-  static String therapistAvailability(String therapistId) =>
-      '$therapists/$therapistId/availability';
-  static String therapistCalendar(String therapistId) =>
-      '$therapists/$therapistId/calendar';
+  // ================= ROCKETS =================
+  static const String rocketsV4 = "$v4/rockets";
+  static const String rocketsV4Query = "$rocketsV4/query";
 
-  // Session
-  static const String session = '/session';
-  static const String sessionAppointment = '$session/appointment';
-  static String joinSession(String sessionId) => '$session/$sessionId/join';
-  static String sessionByUser(String userId) => '$session/$userId';
-  static String onGoingSession(String userId) =>
-      '${sessionByUser(userId)}/on-going';
-  static const String cancelSession = '$sessionAppointment/cancel';
+  // ================= COMPANY =================
+  static const String companyV4 = "$v4/company";
 
-  // User Management
-  static const String userManagement = '/user-management';
-  static const String userCognito = '$userManagement/cognito';
-  static const String mosyCLient = '$mosy/client';
+  // ================= CREW =================
+  static const String crewV4 = "$v4/crew";
+  static const String crewV4Query = "$crewV4/query";
 
-  // growths
-  static const String growths = '/growths';
+  // ================= CAPSULES =================
+  static const String capsulesV4 = "$v4/capsules";
+  static const String capsulesV4Query = "$capsulesV4/query";
 
-  // relaxes
-  static const String relaxes = '/relaxes';
+  // ================= CORES =================
+  static const String coresV4 = "$v4/cores";
+  static const String coresV4Query = "$coresV4/query";
 
-  // guides
-  static const String guides = '/guides';
+  // ================= DRAGONS =================
+  static const String dragonsV4 = "$v4/dragons";
+  static const String dragonsV4Query = "$dragonsV4/query";
 
-  // moods
-  static const String moods = '/moods';
+  // ================= PAYLOAD =================
+  static const String payloadsV4 = "$v4/payloads";
+  static const String payloadsV4Query = "$payloadsV4/query";
 
-  // quotes
-  static const String quotes = '/quotes';
+  // ================= LAUNCHPADS =================
+  static const String launchpadsV4 = "$v4/launchpads";
+  static const String launchpadsV4Query = "$launchpadsV4/query";
 
-  // moods
-  static const String mood = '/mood';
-  static const String quotesByMood = '$quotes$mood';
-  static const String checkToday = '/check-todays';
+  // ================= LANDPADS =================
+  static const String landpadsV4 = "$v4/landpads";
+  static const String landpadsV4Query = "$landpadsV4/query";
 
-  // moods
-  static const String personalized = '/personalized';
+  // ================= SHIPS =================
+  static const String shipsV4 = "$v4/ships";
+  static const String shipsV4Query = "$shipsV4/query";
 
-  // Notifications
-  static const String notification = '/notification';
-  // favorites
-  static const String favorites = '/favorites';
+  // ================= STARLINK =================
+  static const String starlinkV4 = "$v4/starlink";
+  static const String starlinkV4Query = "$starlinkV4/query";
 
-  // Self Test
-  static const String selfTest = '/self-test';
-  static const String user = '/user';
-  static const String selfTestQuestion = '$selfTest/question';
-  static const String selfTestAnswer = '$selfTest$user/answer';
-  static const String selfTestResult = '$selfTest$user/result';
-  static const String selfTestExist = '$selfTest/exists';
+  // ================= ROADSTERS =================
+  static const String roadstersV4 = "$v4/roadsters";
+  static const String roadstersV4Query = "$roadstersV4/query";
 
-  // Chat
-  static const String chat = '/chats';
-  static const String findChatTherapist = '$chat$therapists/find';
-  static const String chatHistory = '$chat/history';
-  static const String chatV2 = '$mosyV2/chats';
-  static const String startChat = '$chatV2/start';
-  static const String chatV2History = '$chatV2/history';
-  static String chatMessages(String conversationId) =>
-      '$chatV2/$conversationId/messages';
-
-  // Diary
-  static const String diary = '/diaries';
-  static const String diaryPinCode = '$diary/pin-code';
-  static const String diaryVerifyPinCode = '$diary/verify/pin-code';
-  static const String diaryUser = '$diary/user';
-  static const String diaryGroup = '$diary/group';
-
-  // Journey
-  static const String journey = '/journey';
-
-  // Account
-  static const String account = '$version/accounts';
-  static String checkLicense(String cognitoId) =>
-      '$account/$cognitoId/check-license';
-
-  // Questionnaire
-  static const String questionnaire = '$mosy/questionnaire';
-  static const String questionnaireHistory = '$questionnaire/history';
-  static const String questionnaireStatus = '$questionnaire/last-submit/status';
-
-  // Personalization
-  static const String personalization = '$mosy/personal';
-  static const String personalGrowth = '$personalization/growths';
-  static const String personalRelax = '$personalization/relaxes';
-  static const String personalTherapist = '$personalization/therapists';
-
-  // Realtime
-  static const String realtime = '/api/realtime/v1/mosy';
-  static const String realtimeChat = '$realtime/chats';
-
-  static const String forgotPassword = '$accounts/forgot-password';
-  static const String forgotPasswordOtpEmail = '$accounts/otp/email';
-  static const String forgotPasswordConfirm = '$forgotPassword/confirm';
+  // ================= HISTORY =================
+  static const String historyV4 = "$v4/history";
+  static const String historyV4Query = "$historyV4/query";
 }

@@ -60,7 +60,7 @@ class HttpModule {
         }
         throw RequestException(errMessage: message);
       } else if (code >= 500) {
-        throw ServerException(errMessage: message);
+        throw ServerException(message);
       }
 
       return ResponseParser(
@@ -92,7 +92,7 @@ class HttpModule {
       ];
 
       if (dioTimeout.any((e) => err.type == e)) {
-        throw NetworkException(errMessage: message);
+        throw NetworkException();
       }
 
       if (errCode == null) {
@@ -106,7 +106,7 @@ class HttpModule {
         }
         throw RequestException(errMessage: message);
       } else if (errCode >= 500) {
-        throw ServerException(errMessage: message);
+        throw ServerException(message);
       } else {
         throw ClientException(errMessage: message);
       }

@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../core/errors/failure.dart';
+import '../../../../core/errors/failures.dart';
 
 part 'startup_state.dart';
 
@@ -19,7 +19,7 @@ class StartupCubit extends Cubit<StartupState> {
     } catch (e) {
       emit(StartupState(
           status: StartupStatus.failure,
-          failure: Failure(message: e.toString())));
+          failure: FailureWithMessage(e.toString())));
     }
   }
 }

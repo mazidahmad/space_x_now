@@ -1,20 +1,19 @@
 import 'dart:developer';
 
-import 'package:dartz/dartz.dart';
-
-import '../errors/exceptions.dart';
-import '../errors/failure.dart';
+import '../errors/failures.dart';
+import '../utils/result.dart';
 
 mixin RepositoryMixin {
-  Future<Either<Failure, T>> callDataSource<T>(
-      Future<T> Function() call) async {
+  Future<Result<T>> callDataSource<T>(Future<T> Function() call) async {
     try {
-      return right(await call());
-    } on ApiException catch (e) {
-      return left(Failure<ApiException>(message: e.message, error: e));
-    } catch (e, stackTrace) {
-      log('log-error: ${e.toString()}', stackTrace: stackTrace);
-      return left(Failure(message: e.toString()));
+      return Success(await call());
+    } catch (e) {
+      log(e.toString());
+      if (e is Failure) {
+        return Error(e);
+      } else {
+        return Error(ClientFailure(e.toString()));
+      }
     }
   }
 }
