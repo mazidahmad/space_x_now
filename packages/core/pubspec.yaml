@@ -1,0 +1,53 @@
+name: space_x_now_core
+description: Core shared functionality for SpaceX Now app
+version: 1.0.0
+
+environment:
+  sdk: ^3.6.1
+  flutter: ">=3.24.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Dependency injection
+  get_it: ^8.2.0
+  injectable: ^2.5.1
+  
+  # State management
+  flutter_bloc: ^9.1.1
+  
+  # Network
+  dio: ^5.9.0
+  
+  # Error handling
+  dartz: ^0.10.1
+  equatable: ^2.0.7
+  
+  # Logging
+  logger: ^2.6.1
+  
+  # Storage
+  hive_ce_flutter: ^2.3.2
+  
+  # Environment
+  envied: ^1.2.1
+  
+  #Cached images
+  cached_network_image: ^3.4.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  
+  # Code generation
+  injectable_generator: ^2.8.1
+  build_runner: ^2.7.1
+  envied_generator: ^1.2.1
+  flutter_flavorizr: ^2.4.1
+
+flutter:
+  uses-material-design: true
+
+resolution: workspace

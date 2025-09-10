@@ -1,68 +1,38 @@
 name: space_x_now
-description: "A new Flutter project."
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+description: SpaceX Now
+version: 1.0.0
+publish_to: 'none'
 
-version: 1.0.0+1
+sdkPath: .fvm/flutter_sdk
 
 environment:
   sdk: ^3.6.1
 
-dependencies:
-  flutter:
-    sdk: flutter
-
-  auto_route: ^10.1.2
-
-  cached_network_image: ^3.4.1
-  cupertino_icons: ^1.0.8
-  dartz: ^0.10.1
-  dio: ^5.9.0
-  envied: ^1.2.1
-  equatable: ^2.0.7
-  flutter_bloc: ^9.1.1
-  get_it: ^8.2.0
-  hive_ce_flutter: ^2.3.2
-  iconsax_flutter: ^1.0.1
-  injectable: ^2.5.1
-  logger: ^2.6.1
-  toastification: ^3.0.3
+workspace:
+  - apps/space_x_now_app
+  - packages/core
+  - packages/ui_components
+  - packages/launches
+  - packages/rockets
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
+  melos: ^7.1.0
 
-  auto_route_generator: ^10.2.4
-  build_runner: ^2.7.1
-  envied_generator: ^1.2.1
-  flutter_flavorizr: ^2.4.1
-  flutter_lints: ^6.0.0
-  injectable_generator: ^2.8.1
-
-flutter:
-
-  uses-material-design: true
-
-  # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
-
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/to/resolution-aware-images
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/to/asset-from-package
-
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  fonts:
-    - family: D-DIN
-      fonts:
-        - asset: assets/fonts/ddin/D-DIN.otf
-        - asset: assets/fonts/ddin/D-DIN-Bold.otf
-  
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/to/font-from-package
+melos:
+  scripts:
+    analyze:
+      exec: dart analyze
+    format:
+      run: dart format .
+    build_app:
+      run: melos exec -c 1 --order-dependents --fail-fast --scope=space_x_now_app --depends-on="auto_route_generator" -- \
+          dart run build_runner build --delete-conflicting-outputs
+    build_core_package:
+      run: melos exec -c 1 --order-dependents --fail-fast --scope=space_x_now_core --depends-on="build_runner" -- \
+          dart run build_runner build --delete-conflicting-outputs
+    build_launches_package:
+      run: melos exec -c 1 --order-dependents --fail-fast --scope=space_x_now_launches --depends-on="build_runner" -- \
+          dart run build_runner build --delete-conflicting-outputs
+    build_rockets_package:
+      run: melos exec -c 1 --order-dependents --fail-fast --scope=space_x_now_rockets --depends-on="build_runner" -- \
+          dart run build_runner build --delete-conflicting-outputs

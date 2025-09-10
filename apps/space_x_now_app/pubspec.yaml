@@ -1,0 +1,43 @@
+name: space_x_now_app
+description: "A new Flutter project."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  
+  # Core
+  space_x_now_core:
+    path: ../../packages/core
+
+  # Features
+  space_x_launches:
+    path: ../../packages/launches
+  space_x_rockets:
+    path: ../../packages/rockets
+
+  # App Dependencies
+  auto_route: ^10.1.2
+
+  # Shared UI components
+  space_x_now_ui_components:
+    path: ../../packages/ui_components
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  auto_route_generator: ^10.2.4
+  flutter_lints: ^6.0.0
+
+flutter:
+
+  uses-material-design: true
+
+resolution: workspace

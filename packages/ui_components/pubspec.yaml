@@ -1,0 +1,35 @@
+name: space_x_now_ui_components
+description: Shared UI components, themes, and widgets for SpaceX Now
+version: 1.0.0
+publish_to: 'none'
+
+environment:
+  sdk: ^3.6.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # UI & Icons
+  cupertino_icons: ^1.0.8
+  iconsax_flutter: ^1.0.1
+
+  # Toast & Notifications
+  toastification: ^3.0.3
+  
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  
+  fonts:
+    - family: D-DIN
+      fonts:
+        - asset: assets/fonts/ddin/D-DIN.otf
+        - asset: assets/fonts/ddin/D-DIN-Bold.otf
+
+resolution: workspace
