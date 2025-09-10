@@ -6,6 +6,9 @@ class CachedKeys {
   static const String launches = 'launches';
   static const String latestLaunch = 'latest_launch';
   static const String nextLaunch = 'next_launch';
+
+  // Company
+  static const String companyInfo = 'company_info';
 }
 
 class BoxName {
