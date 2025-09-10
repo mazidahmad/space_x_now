@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:space_x_now_core/core.dart';
+import 'package:space_x_now_di/di.dart';
 import 'package:space_x_now_ui_components/ui_components.dart';
 
 import '../cubit/startup_cubit.dart';
@@ -16,7 +17,13 @@ class StartupPage extends StatefulWidget {
 }
 
 class _StartupPageState extends State<StartupPage> with MessengerMixin {
-  final StartupCubit _cubit = getIt<StartupCubit>();
+  late final StartupCubit _cubit;
+
+  @override
+  void initState() {
+    _cubit = getIt<StartupCubit>();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

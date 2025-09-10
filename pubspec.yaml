@@ -14,25 +14,22 @@ workspace:
   - packages/ui_components
   - packages/launches
   - packages/rockets
+  - packages/di
 
 dev_dependencies:
   melos: ^7.1.0
 
-melos:
+melos:  
   scripts:
     analyze:
       exec: dart analyze
     format:
       run: dart format .
     build_app:
-      run: melos exec -c 1 --order-dependents --fail-fast --scope=space_x_now_app --depends-on="auto_route_generator" -- \
-          dart run build_runner build --delete-conflicting-outputs
+      run: melos exec --scope=space_x_now_app -- "dart run build_runner clean && dart run build_runner build --delete-conflicting-outputs"
     build_core_package:
-      run: melos exec -c 1 --order-dependents --fail-fast --scope=space_x_now_core --depends-on="build_runner" -- \
-          dart run build_runner build --delete-conflicting-outputs
+      run: melos exec --scope=space_x_now_core -- "dart run build_runner clean && dart run build_runner build --delete-conflicting-outputs"
     build_launches_package:
-      run: melos exec -c 1 --order-dependents --fail-fast --scope=space_x_now_launches --depends-on="build_runner" -- \
-          dart run build_runner build --delete-conflicting-outputs
+      run: melos exec --scope=space_x_launches -- "dart run build_runner clean && dart run build_runner build --delete-conflicting-outputs"
     build_rockets_package:
-      run: melos exec -c 1 --order-dependents --fail-fast --scope=space_x_now_rockets --depends-on="build_runner" -- \
-          dart run build_runner build --delete-conflicting-outputs
+      run: melos exec --scope=space_x_rockets -- "dart run build_runner clean && dart run build_runner build --delete-conflicting-outputs"

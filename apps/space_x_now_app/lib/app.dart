@@ -14,7 +14,7 @@ class App extends StatelessWidget {
     return ToastificationWrapper(
       child: MaterialApp.router(
         title: F.title,
-        theme: ThemeData(primarySwatch: Colors.blue),
+        theme: AppTheme.darkTheme,
         routerConfig: _appRouter.config(),
       ),
     );

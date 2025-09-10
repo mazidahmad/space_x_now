@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
+import 'package:space_x_now_di/di.dart';
 
-import '../../../di/service_locator.dart';
 import '../../../log/log.dart';
 
 class LoggingInterceptor extends Interceptor {

@@ -44,8 +44,7 @@ mixin MessengerMixin {
                 Expanded(
                   child: Text(
                     title,
-                    style:
-                        AppTextStyle.pTextSmMedium(color: AppColors.coreWhite),
+                    style: AppTextStyle.statusBadge,
                   ),
                 ),
               ],

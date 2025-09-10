@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:space_x_now_app/injection.dart';
 import 'package:space_x_now_core/core.dart';
 
 import 'app.dart';
@@ -17,7 +18,7 @@ Future<void> main() async => runZonedGuarded(
         WidgetsFlutterBinding.ensureInitialized();
         await Hive.initFlutter();
 
-        configureDependencies();
+        Injection.configureDependencies();
 
         runApp(App());
       },

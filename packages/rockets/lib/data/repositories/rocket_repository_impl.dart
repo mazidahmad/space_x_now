@@ -1,4 +1,5 @@
 import 'package:space_x_now_core/core.dart';
+import 'package:space_x_now_di/di.dart';
 
 import '../../domain/entities/rocket.dart';
 import '../../domain/repositories/rocket_repository.dart';

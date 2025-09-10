@@ -4,6 +4,7 @@ library;
 // Themes
 export 'themes/app_colors.dart';
 export 'themes/app_text_styles.dart';
+export 'themes/app_theme.dart';
 
 // Mixin
 export 'mixin/messenger_mixin.dart';

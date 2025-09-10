@@ -1,10 +1,12 @@
 import 'package:space_x_now_core/core.dart';
+import 'package:space_x_now_di/di.dart';
 
 import '../../domain/entities/launch.dart';
 import '../../domain/repositories/launch_repository.dart';
 import '../datasources/launch_local_data_source.dart';
 import '../datasources/launch_remote_data_source.dart';
 
+@Injectable(as: LaunchRepository)
 class LaunchRepositoryImpl extends LaunchRepository with RepositoryMixin {
   final LaunchRemoteDataSource remoteDataSource =
       getIt<LaunchRemoteDataSource>();

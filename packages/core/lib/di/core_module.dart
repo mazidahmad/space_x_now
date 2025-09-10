@@ -7,7 +7,7 @@ import '../services/global_service.dart';
 import '../storages/cached_storage.dart';
 
 @module
-abstract class RegisterModule {
+abstract class CoreModule {
   @Singleton()
   Logger get logger => Logger(printer: SimplePrinter());
 
