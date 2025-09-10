@@ -1,5 +1,8 @@
 import 'dart:developer';
 
+import 'package:space_x_now/core/constants/app_strings.dart';
+import 'package:space_x_now/core/errors/exceptions.dart';
+
 import '../errors/failures.dart';
 import '../utils/result.dart';
 
@@ -9,10 +12,14 @@ mixin RepositoryMixin {
       return Success(await call());
     } catch (e) {
       log(e.toString());
-      if (e is Failure) {
-        return Error(e);
+      if (e is ServerException) {
+        return Error(ServerFailure(e.message));
+      } else if (e is NetworkException) {
+        return const Error(NetworkFailure());
+      } else if (e is ClientException) {
+        return Error(ClientFailure(e.errMessage));
       } else {
-        return Error(ClientFailure(e.toString()));
+        return Error(UnknownFailure(AppStrings.generalErrorMessage));
       }
     }
   }
