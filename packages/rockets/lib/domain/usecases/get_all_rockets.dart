@@ -9,7 +9,7 @@ class GetAllRockets implements UseCase<List<Rocket>, NoParams> {
   GetAllRockets(this.repository);
 
   @override
-  Future<Result<List<Rocket>>> call(NoParams params) async {
+  Future<Either<Failure, List<Rocket>>> call(NoParams params) async {
     return await repository.getAllRockets();
   }
 }

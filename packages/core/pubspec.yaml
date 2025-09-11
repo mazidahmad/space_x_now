@@ -13,6 +13,8 @@ dependencies:
   
   # State management
   flutter_bloc: ^9.1.1
+
+  connectivity_plus: ^7.0.0
   
   # Network
   dio: ^5.9.0
@@ -27,6 +29,9 @@ dependencies:
   
   # Logging
   logger: ^2.6.1
+
+  # Date formatting
+  intl: ^0.20.2
   
   # Storage
   hive_ce_flutter: ^2.3.2

@@ -1,4 +1,5 @@
 import 'package:space_x_now_core/core.dart';
+import 'package:space_x_now_core/models/query_response_model.dart';
 import 'package:space_x_now_di/di.dart';
 
 import '../models/rocket_model.dart';
@@ -6,7 +7,8 @@ import '../models/rocket_model.dart';
 abstract class RocketRemoteDataSource {
   Future<List<RocketModel>> getAllRockets();
   Future<RocketModel> getRocketById(String id);
-  Future<List<RocketModel>> queryRockets(Map<String, dynamic> query);
+  Future<QueryResponseModel<RocketModel>> queryRockets(
+      Map<String, dynamic> query);
 }
 
 @Injectable(as: RocketRemoteDataSource)
@@ -33,20 +35,16 @@ class RocketRemoteDataSourceImpl implements RocketRemoteDataSource {
   }
 
   @override
-  Future<List<RocketModel>> queryRockets(Map<String, dynamic> query) async {
+  Future<QueryResponseModel<RocketModel>> queryRockets(
+      Map<String, dynamic> query) async {
     final response = await client.sendPostRequest(
       ApiUrl.rocketsV4Query,
       data: query,
     );
 
-    if (response.data is List) {
-      return (response.data as List)
-          .map((json) => RocketModel.fromJson(json))
-          .toList();
-    } else if (response.data is Map<String, dynamic>) {
-      return [RocketModel.fromJson(response.data)];
-    } else {
-      throw ServerException('Failed to query rockets: ${response.code}');
-    }
+    return QueryResponseModel<RocketModel>.fromJson(
+      response.data,
+      (json) => RocketModel.fromJson(json),
+    );
   }
 }

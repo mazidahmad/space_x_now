@@ -38,13 +38,13 @@ mixin MessengerMixin {
                     ),
                     child: Icon(
                       _getIconByType(type),
-                      color: AppColors.coreWhite,
+                      color: AppColors.textPrimary,
                     ),
                   ),
                 Expanded(
                   child: Text(
                     title,
-                    style: AppTextStyle.statusBadge,
+                    style: AppTextStyle.small(),
                   ),
                 ),
               ],
@@ -58,24 +58,24 @@ mixin MessengerMixin {
   IconData _getIconByType(ToastType type) {
     switch (type) {
       case ToastType.failed:
-        return Iconsax.close_square;
+        return FontAwesomeIcons.circleXmark;
       case ToastType.warning:
-        return Iconsax.warning_2;
+        return FontAwesomeIcons.triangleExclamation;
       default:
-        return Iconsax.tick_square;
+        return FontAwesomeIcons.info;
     }
   }
 
   Color _getToastColor(ToastType type) {
     switch (type) {
       case ToastType.failed:
-        return AppColors.error900;
+        return AppColors.red2;
       case ToastType.warning:
-        return AppColors.warning;
+        return AppColors.secondaryColor;
       case ToastType.success:
-        return AppColors.success900;
+        return AppColors.green2;
       default:
-        return AppColors.neutralGray900;
+        return AppColors.backgroundDefault;
     }
   }
 }

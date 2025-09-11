@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:space_x_now_core/core.dart';
+import 'package:space_x_now_app/router/app_router.gr.dart';
+import 'package:space_x_now_core/core.dart' show BlocProvider, BlocListener;
 import 'package:space_x_now_di/di.dart';
 import 'package:space_x_now_ui_components/ui_components.dart';
 
@@ -33,9 +34,7 @@ class _StartupPageState extends State<StartupPage> with MessengerMixin {
         child: BlocListener<StartupCubit, StartupState>(
           listener: (context, state) {
             if (state.status == StartupStatus.success) {
-              // Navigate to the next page or home page
-              // For example:
-              // context.router.replace(const HomeRoute());
+              context.router.push(MainRoute());
             } else if (state.status == StartupStatus.failure) {
               // Show error message
               final failureMessage = state.failure?.message ?? 'Unknown error';
@@ -46,9 +45,23 @@ class _StartupPageState extends State<StartupPage> with MessengerMixin {
             }
           },
           child: Center(
-            child: Text(
-              'Startup Page',
-              style: Theme.of(context).textTheme.headlineMedium,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Hero(
+                  tag: 'app_logo',
+                  child: AppImage.asset(
+                    AppImages.imgAppLogo,
+                    width: 100,
+                    height: 100,
+                    borderRadius: 14,
+                  ),
+                ),
+                Text(
+                  'N  O  W',
+                  style: AppTextStyle.headline3(),
+                )
+              ],
             ),
           ),
         ),

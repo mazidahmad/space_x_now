@@ -1,24 +1,22 @@
 import 'dart:developer';
 
-import '../constants/app_strings.dart';
-import '../errors/exceptions.dart';
-import '../errors/failures.dart';
-import '../utils/result.dart';
+import 'package:space_x_now_core/core.dart';
 
 mixin RepositoryMixin {
-  Future<Result<T>> callDataSource<T>(Future<T> Function() call) async {
+  Future<Either<Failure, T>> callDataSource<T>(
+      Future<T> Function() call) async {
     try {
-      return Success(await call());
-    } catch (e) {
-      log(e.toString());
+      return Right(await call());
+    } catch (e, stackTrace) {
+      log(e.toString(), stackTrace: stackTrace);
       if (e is ServerException) {
-        return Error(ServerFailure(e.message));
+        return Left(ServerFailure(e.message));
       } else if (e is NetworkException) {
-        return const Error(NetworkFailure());
+        return const Left(NetworkFailure());
       } else if (e is ClientException) {
-        return Error(ClientFailure(e.errMessage));
+        return Left(ClientFailure(e.errMessage));
       } else {
-        return Error(UnknownFailure(AppStrings.generalErrorMessage));
+        return Left(UnknownFailure(AppStrings.generalErrorMessage));
       }
     }
   }

@@ -53,3 +53,5 @@ app.*.map.json
 *.g.dart
 *.gr.dart
 .env.*
+
+app_localizations_*.dart

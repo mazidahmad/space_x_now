@@ -4,6 +4,8 @@ library;
 export 'package:flutter_bloc/flutter_bloc.dart';
 export 'package:equatable/equatable.dart';
 export 'package:hive_ce_flutter/hive_flutter.dart';
+export 'package:dartz/dartz.dart';
+export 'package:intl/intl.dart';
 
 // Constants
 export 'constants/api_url.dart';
@@ -39,6 +41,3 @@ export 'storages/cached_storage.dart';
 
 // Use cases
 export 'usecases/usecase.dart';
-
-// Utils
-export 'utils/result.dart';

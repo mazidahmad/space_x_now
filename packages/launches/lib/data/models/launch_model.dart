@@ -1,3 +1,6 @@
+import 'package:space_x_launchpad/data/models/launchpad_model.dart';
+import 'package:space_x_rockets/data/models/rocket_model.dart';
+
 import '../../domain/entities/launch.dart';
 import 'fairings_model.dart';
 import 'launch_links_model.dart';
@@ -45,7 +48,8 @@ class LaunchModel extends Launch {
       tdb: json['tdb'] ?? false,
       net: json['net'] ?? false,
       window: json['window'],
-      rocket: json['rocket'],
+      rocket:
+          json['rocket'] != null ? RocketModel.fromJson(json['rocket']) : null,
       success: json['success'],
       failures: (json['failures'] as List<dynamic>?)
               ?.map((failure) => LaunchFailureModel.fromJson(failure))
@@ -56,7 +60,9 @@ class LaunchModel extends Launch {
       ships: List<String>.from(json['ships'] ?? []),
       capsules: List<String>.from(json['capsules'] ?? []),
       payloads: List<String>.from(json['payloads'] ?? []),
-      launchpad: json['launchpad'],
+      launchpad: json['launchpad'] != null
+          ? LaunchPadModel.fromJson(json['launchpad'])
+          : null,
       autoUpdate: json['auto_update'] ?? true,
       flightNumber: json['flight_number'],
       name: json['name'],

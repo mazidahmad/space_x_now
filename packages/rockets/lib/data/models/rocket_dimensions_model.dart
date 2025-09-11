@@ -8,8 +8,8 @@ class RocketDimensionsModel extends RocketDimensions {
 
   factory RocketDimensionsModel.fromJson(Map<String, dynamic> json) {
     return RocketDimensionsModel(
-      meters: (json['meters'] as num).toDouble(),
-      feet: (json['feet'] as num).toDouble(),
+      meters: (json['meters'] ?? 0).toDouble(),
+      feet: (json['feet'] ?? 0).toDouble(),
     );
   }
 

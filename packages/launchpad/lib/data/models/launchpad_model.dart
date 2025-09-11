@@ -21,7 +21,16 @@ class LaunchPadModel extends LaunchPad {
 
   factory LaunchPadModel.fromJson(Map<String, dynamic> json) {
     return LaunchPadModel(
-      images: List<String>.from(json['images'] ?? []),
+      images: json['images'] != null
+          ? Map<String, List<String>>.from(
+              (json['images'] as Map<String, dynamic>).map(
+                (key, value) => MapEntry(
+                  key,
+                  List<String>.from(value ?? []),
+                ),
+              ),
+            )
+          : {},
       name: json['name'] ?? '',
       fullName: json['full_name'] ?? '',
       locality: json['locality'] ?? '',
@@ -60,7 +69,7 @@ class LaunchPadModel extends LaunchPad {
   }
 
   LaunchPadModel copyWith({
-    List<String>? images,
+    Map<String, List<String>>? images,
     String? name,
     String? fullName,
     String? locality,

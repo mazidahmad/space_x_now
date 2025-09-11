@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
+import 'package:space_x_rockets/data/models/rocket_model.dart';
 
 import 'landing_legs.dart';
 import 'rocket_dimensions.dart';
@@ -138,6 +139,33 @@ class Rocket extends Equatable {
       wikipedia: wikipedia ?? this.wikipedia,
       description: description ?? this.description,
       id: id ?? this.id,
+    );
+  }
+
+  RocketModel toModel() {
+    return RocketModel(
+      name: name,
+      type: type,
+      active: active,
+      stages: stages,
+      boosters: boosters,
+      costPerLaunch: costPerLaunch,
+      successRatePct: successRatePct,
+      firstFlight: firstFlight,
+      country: country,
+      company: company,
+      height: height,
+      diameter: diameter,
+      mass: mass,
+      payloadWeights: payloadWeights,
+      firstStage: firstStage,
+      secondStage: secondStage,
+      engines: engines,
+      landingLegs: landingLegs,
+      flickrImages: flickrImages,
+      wikipedia: wikipedia,
+      description: description,
+      id: id,
     );
   }
 }

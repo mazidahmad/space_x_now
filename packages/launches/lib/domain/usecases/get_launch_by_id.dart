@@ -9,7 +9,7 @@ class GetLaunchById implements UseCase<Launch, String> {
   final LaunchRepository _repo = getIt<LaunchRepository>();
 
   @override
-  Future<Result<Launch>> call(String params) async {
+  Future<Either<Failure, Launch>> call(String params) async {
     return await _repo.getLaunchById(params);
   }
 }

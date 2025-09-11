@@ -1,4 +1,5 @@
 import 'package:space_x_now_core/core.dart';
+import 'package:space_x_now_core/entities/query_response.dart';
 import 'package:space_x_now_di/di.dart';
 
 import '../../domain/entities/rocket.dart';
@@ -12,7 +13,7 @@ class RocketRepositoryImpl extends RocketRepository with RepositoryMixin {
   final NetworkInfo networkInfo = getIt<NetworkInfo>();
 
   @override
-  Future<Result<List<Rocket>>> getAllRockets() => callDataSource(
+  Future<Either<Failure, List<Rocket>>> getAllRockets() => callDataSource(
         () async {
           if (await networkInfo.isConnected) {
             final rockets = await remoteDataSource.getAllRockets();
@@ -24,7 +25,7 @@ class RocketRepositoryImpl extends RocketRepository with RepositoryMixin {
       );
 
   @override
-  Future<Result<Rocket>> getRocketById(String id) {
+  Future<Either<Failure, Rocket>> getRocketById(String id) {
     return callDataSource(
       () async {
         if (await networkInfo.isConnected) {
@@ -38,7 +39,8 @@ class RocketRepositoryImpl extends RocketRepository with RepositoryMixin {
   }
 
   @override
-  Future<Result<List<Rocket>>> queryRockets(Map<String, dynamic> query) =>
+  Future<Either<Failure, QueryResponse<Rocket>>> queryRockets(
+          Map<String, dynamic> query) =>
       callDataSource(
         () async {
           if (await networkInfo.isConnected) {

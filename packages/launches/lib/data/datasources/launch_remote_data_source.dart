@@ -1,5 +1,5 @@
-import 'dart:convert';
 import 'package:space_x_now_core/core.dart';
+import 'package:space_x_now_core/models/query_response_model.dart';
 import 'package:space_x_now_di/di.dart';
 
 import '../models/launch_model.dart';
@@ -11,7 +11,8 @@ abstract class LaunchRemoteDataSource {
   Future<LaunchModel> getNextLaunch();
   Future<List<LaunchModel>> getPastLaunches();
   Future<List<LaunchModel>> getUpcomingLaunches();
-  Future<List<LaunchModel>> queryLaunches(Map<String, dynamic> query);
+  Future<QueryResponseModel<LaunchModel>> queryLaunches(
+      Map<String, dynamic> query);
 }
 
 @Injectable(as: LaunchRemoteDataSource)
@@ -87,21 +88,15 @@ class LaunchRemoteDataSourceImpl implements LaunchRemoteDataSource {
   }
 
   @override
-  Future<List<LaunchModel>> queryLaunches(Map<String, dynamic> query) async {
+  Future<QueryResponseModel<LaunchModel>> queryLaunches(
+      Map<String, dynamic> query) async {
     final response = await client.sendPostRequest(
       ApiUrl.launchesV4Query,
-      data: json.encode(query),
+      data: query,
     );
-
-    // Handle paginated response
-    if (response.data is Map<String, dynamic> &&
-        response.data.containsKey('docs')) {
-      final List<dynamic> jsonList = response.data['docs'];
-      return jsonList.map((json) => LaunchModel.fromJson(json)).toList();
-    } else if (response.data is List<dynamic>) {
-      return response.data.map((json) => LaunchModel.fromJson(json)).toList();
-    } else {
-      throw ServerException('Unexpected response format');
-    }
+    return QueryResponseModel<LaunchModel>.fromJson(
+      response.data,
+      (json) => LaunchModel.fromJson(json),
+    );
   }
 }

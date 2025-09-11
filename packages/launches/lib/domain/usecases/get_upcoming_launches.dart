@@ -9,7 +9,7 @@ class GetUpcomingLaunches implements UseCase<List<Launch>, NoParams> {
   final LaunchRepository _repo = getIt<LaunchRepository>();
 
   @override
-  Future<Result<List<Launch>>> call(NoParams params) async {
+  Future<Either<Failure, List<Launch>>> call(NoParams params) async {
     return await _repo.getUpcomingLaunches();
   }
 }

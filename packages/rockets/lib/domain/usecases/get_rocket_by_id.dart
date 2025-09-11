@@ -9,7 +9,7 @@ class GetRocketById implements UseCase<Rocket, String> {
   final RocketRepository _repo = getIt<RocketRepository>();
 
   @override
-  Future<Result<Rocket>> call(String params) async {
+  Future<Either<Failure, Rocket>> call(String params) async {
     return await _repo.getRocketById(params);
   }
 }

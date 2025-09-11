@@ -1,240 +1,168 @@
 import 'package:flutter/material.dart';
 
-/// SpaceX Now App Color Palette
-/// Inspired by space exploration, astronauts, and the cosmos from the provided image
 class AppColors {
-  static bool isDarkTheme = true;
+  // Global
+  static const Color primaryColor = Color(0xFFEFB205);
 
-  // ======================= SPACE THEME CORE COLORS =======================
-
-  // Deep Space Blues - Primary color family inspired by the cosmic background
-  static const Color spaceDeepBlue = Color(0xFF0A0E27); // Deep space background
-  static const Color spaceMidBlue = Color(0xFF1A1F3A); // Mid space tone
-  static const Color spaceLightBlue = Color(0xFF2D3748); // Lighter space blue
-  static const Color spaceAccentBlue = Color(0xFF4299E1); // Bright accent blue
-  static const Color spaceCyanBlue = Color(0xFF63B3ED); // Light cyan blue
-
-  // Metallic Astronaut Suit Colors - Inspired by the suit in the image
-  static const Color metallicDark = Color(0xFF2D3748);
-  static const Color metallicMid = Color(0xFF4A5568);
-  static const Color metallicLight = Color(0xFF718096);
-  static const Color metallicBright = Color(0xFFA0AEC0);
-  static const Color chrome = Color(0xFFE2E8F0);
-
-  // Pure Space Colors - Clean whites and blacks
-  static const Color pureWhite = Color(0xFFFFFFFF);
-  static const Color offWhite = Color(0xFFF7FAFC);
-  static const Color lightGray = Color(0xFFEDF2F7);
-  static const Color spaceBlack = Color(0xFF000000);
-
-  // SpaceX Inspired Accent Colors
-  static const Color rocketOrange =
-      Color(0xFFFF6B35); // SpaceX signature orange
-  static const Color thrusterBlue = Color(0xFF00A8FF); // Engine flame blue
-  static const Color successGreen = Color(0xFF48BB78); // Mission success
-  static const Color warningYellow = Color(0xFFED8936); // Caution systems
-  static const Color errorRed = Color(0xFFE53E3E); // Critical alerts
-
-  // ======================= MATERIAL DESIGN THEME INTEGRATION =======================
-
-  /// Primary colors for the app theme
-  static Color get primary => rocketOrange;
-  static Color get primaryVariant => Color(0xFFCC5529);
-  static Color get secondary => thrusterBlue;
-  static Color get secondaryVariant => Color(0xFF0086CC);
-
-  /// Background colors based on theme
-  static Color get background => isDarkTheme ? spaceDeepBlue : offWhite;
-  static Color get surface => isDarkTheme ? spaceMidBlue : pureWhite;
-  static Color get cardBackground => isDarkTheme ? spaceLightBlue : lightGray;
-
-  /// Text colors based on theme
-  static Color get onPrimary => pureWhite;
-  static Color get onSecondary => pureWhite;
-  static Color get onBackground => isDarkTheme ? pureWhite : spaceDeepBlue;
-  static Color get onSurface => isDarkTheme ? pureWhite : spaceDeepBlue;
-  static Color get onError => pureWhite;
-
-  /// Status and feedback colors
-  static Color get success => successGreen;
-  static Color get warning => warningYellow;
-  static Color get error => errorRed;
-  static Color get info => spaceAccentBlue;
-
-  /// Interactive element colors
-  static Color get buttonPrimary => rocketOrange;
-  static Color get buttonSecondary => thrusterBlue;
-  static Color get buttonDisabled => isDarkTheme ? metallicMid : metallicLight;
-  static Color get buttonText => pureWhite;
-
-  /// Text colors
-  static Color get mainText => onBackground;
-  static Color get secondaryText => isDarkTheme ? metallicBright : metallicMid;
-  static Color get hintText => isDarkTheme ? metallicLight : metallicMid;
-  static Color get disabledText => isDarkTheme ? metallicMid : metallicLight;
-
-  /// Border and divider colors
-  static Color get divider => isDarkTheme ? metallicMid : metallicLight;
-  static Color get border => isDarkTheme ? metallicLight : metallicMid;
-  static Color get focusedBorder => rocketOrange;
-
-  /// Shadow and overlay colors
-  static Color get shadowColor => spaceDeepBlue.withValues(alpha: 0.3);
-  static Color get overlayColor => spaceDeepBlue.withValues(alpha: 0.6);
-  static Color get scrimColor => spaceDeepBlue.withValues(alpha: 0.8);
-
-  // ======================= COMPLETE MATERIAL COLOR SCHEMES =======================
-
-  /// Light theme ColorScheme for Material 3
-  static const ColorScheme lightColorScheme = ColorScheme.light(
-    brightness: Brightness.light,
-    primary: rocketOrange,
-    onPrimary: pureWhite,
-    primaryContainer: Color(0xFFFFDAD4),
-    onPrimaryContainer: Color(0xFF2D1600),
-    secondary: thrusterBlue,
-    onSecondary: pureWhite,
-    secondaryContainer: Color(0xFFCCE7FF),
-    onSecondaryContainer: Color(0xFF001E30),
-    tertiary: spaceAccentBlue,
-    onTertiary: pureWhite,
-    tertiaryContainer: Color(0xFFD8E2FF),
-    onTertiaryContainer: Color(0xFF0D1B2C),
-    error: errorRed,
-    onError: pureWhite,
-    errorContainer: Color(0xFFFFDAD6),
-    onErrorContainer: Color(0xFF410002),
-    surface: offWhite,
-    onSurface: spaceDeepBlue,
-    surfaceContainer: lightGray,
-    onSurfaceVariant: metallicMid,
-    outline: metallicLight,
-    outlineVariant: metallicBright,
-    shadow: spaceDeepBlue,
-    scrim: spaceDeepBlue,
-    inverseSurface: spaceLightBlue,
-    onInverseSurface: pureWhite,
-    inversePrimary: Color(0xFFFFB4A3),
-    surfaceTint: rocketOrange,
+  static MaterialColor primarySwatch = const MaterialColor(
+    0xFFEFB205, // Default/Primary Color
+    <int, Color>{
+      100: Color(0xFF99FBDB),
+      200: Color(0xFF504432),
+      300: Color(0xFF64522c),
+      400: Color(0xFF786026),
+      500: Color(0xFF8b6e21),
+      600: Color(0xFF9f7b1b),
+      700: Color(0xFFb38916),
+      800: Color(0xFFb38916),
+      900: Color(0xFFb38916),
+    },
   );
 
-  /// Dark theme ColorScheme for Material 3
-  static const ColorScheme darkColorScheme = ColorScheme.dark(
-    brightness: Brightness.dark,
-    primary: rocketOrange,
-    onPrimary: Color(0xFF2D1600),
-    primaryContainer: Color(0xFF7D2C00),
-    onPrimaryContainer: Color(0xFFFFDAD4),
-    secondary: thrusterBlue,
-    onSecondary: Color(0xFF001E30),
-    secondaryContainer: Color(0xFF004B73),
-    onSecondaryContainer: Color(0xFFCCE7FF),
-    tertiary: spaceCyanBlue,
-    onTertiary: Color(0xFF0D1B2C),
-    tertiaryContainer: Color(0xFF253140),
-    onTertiaryContainer: Color(0xFFD8E2FF),
-    error: Color(0xFFFFB4AB),
-    onError: Color(0xFF690005),
-    errorContainer: Color(0xFF93000A),
-    onErrorContainer: Color(0xFFFFDAD6),
-    surface: spaceLightBlue,
-    onSurface: pureWhite,
-    surfaceContainer: metallicMid,
-    outline: metallicLight,
-    outlineVariant: metallicMid,
-    shadow: spaceDeepBlue,
-    scrim: spaceDeepBlue,
-    inverseSurface: chrome,
-    onInverseSurface: spaceDeepBlue,
-    inversePrimary: rocketOrange,
-    surfaceTint: rocketOrange,
+  static MaterialColor primarySwatchDarker =
+      const MaterialColor(0xFFc59305, {});
+  static MaterialColor primarySwatchLighter =
+      const MaterialColor(0xFFfad057, {});
+
+  static const Color secondaryColor = Color(0xFFf1e49d);
+
+  static MaterialColor secondarySwatch = const MaterialColor(
+    0xFFf1e49d, // Default/Primary Color
+    <int, Color>{
+      100: Color(0xFF3d3d48),
+      200: Color(0xFF505052),
+      300: Color(0xFF65625d),
+      400: Color(0xFF797567),
+      500: Color(0xFF8d8772),
+      600: Color(0xFFa19b7d),
+      700: Color(0xFFb5ad87),
+      800: Color(0xFFcac092),
+      900: Color(0xFFddd193),
+    },
   );
 
-  // ======================= SPECIALIZED SPACE COLORS =======================
+  static MaterialColor secondarySwatchDarker =
+      const MaterialColor(0xFFfff5b9, {});
+  static MaterialColor secondarySwatchLighter =
+      const MaterialColor(0xFFdece76, {});
 
-  /// Space mission status colors
-  static const Color missionSuccess = successGreen;
-  static const Color missionPending = warningYellow;
-  static const Color missionFailed = errorRed;
-  static const Color missionAborted = Color(0xFF9CA3AF);
+  static const Color light0 = Color(0xFFA4A5AD);
+  static const Color light1 = Color(0xFFEBEBF0);
+  static const Color light4 = Color(0xFFFFFFFF);
 
-  /// Rocket stage colors
-  static const Color firstStage = rocketOrange;
-  static const Color secondStage = thrusterBlue;
-  static const Color payload = spaceCyanBlue;
+  static Color bg01 = const Color(0xFF3F3F3F).withValues(alpha: 0.31);
 
-  /// Launch pad status colors
-  static const Color launchPadActive = successGreen;
-  static const Color launchPadInactive = metallicMid;
-  static const Color launchPadMaintenance = warningYellow;
+  static const Color dark0 = Color(0xFF202124);
+  static const Color dark1 = Color(0xFF1C1C1E);
+  static const Color dark2 = Color(0xFF262626);
+  static const Color dark3 = Color(0xFF8E8E92);
+  static const Color dark4 = Color(0xFF656564);
+  static const Color dark5 = Color(0xFF424446);
+  static const Color darkBlue = Color(0xFF373E4E);
+  static const Color darkBlue2 = Color(0xFF272A35);
+  static Color darkBg0 = const Color(0xff3F3F3F).withValues(alpha: 0.31);
+  static Color darkBg1 = const Color(0xff2E2D2D).withValues(alpha: 0.57);
 
-  // ======================= LEGACY COMPATIBILITY COLORS =======================
+  static Color shadow = const Color(0xFF141414).withValues(alpha: 0.24);
 
-  // Core white (commonly used in existing code)
-  static const Color coreWhite = pureWhite;
+  static const Color green0 = Color(0xFF05A660);
+  static const Color green1 = Color(0xFF2FD058);
+  static const Color green2 = Color(0xFF39D98A);
 
-  // Neutral grays for backward compatibility
-  static const Color neutralGray100 = lightGray;
-  static const Color neutralGray200 = metallicBright;
-  static const Color neutralGray500 = metallicMid;
-  static const Color neutralGray600 = metallicLight;
-  static const Color neutralGray700 = metallicMid;
-  static const Color neutralGray900 = metallicDark;
+  static const Color blue1 = Color(0xFF0095F6);
+  static Color blue3 = const Color(0xFF5B8DEF).withValues(alpha: 0.43);
 
-  // Legacy status colors
-  static Color get success900 => Color(0xFF065F46);
-  static Color get error900 => Color(0xFF7F1D1D);
-  static Color get error500 => errorRed;
-  static Color get info500 => spaceAccentBlue;
+  static const Color red1 = Color(0xFFFF3B3B);
+  static const Color red2 = Color(0xFFFF5C5C);
 
-  // Legacy content colors
-  static Color get contentPrimary => onSurface;
-  static Color get contentSecondary => secondaryText;
-  static Color get contentTertiary => hintText;
+  // Text
+  static const Color textPrimary = light4;
+  static const Color textSecondary = Color(0xFFAAAAAA);
+  static const Color textBlack = dark0;
 
-  // Legacy background colors
-  static Color get backgroundScreen => background;
-  static Color get backgroundSecondary => surface;
-  static Color get backgroundTertiary => cardBackground;
+  // Background
+  static const Color backgroundDefault = dark0;
+  static const Color backgroundSecondary = dark1;
 
-  // ======================= UTILITY METHODS =======================
+  static LinearGradient gradient1 = const LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      Color(0xFFF6D87B),
+      Color(0xFFF6F2C1),
+      Color(0xFFF6E27B),
+    ],
+  );
 
-  /// Switch between light and dark theme
-  static void setDarkTheme(bool dark) {
-    isDarkTheme = dark;
-  }
+  static LinearGradient gradient2 = const LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      Color(0xFFFF8800),
+      Color(0xFFE63535),
+    ],
+  );
 
-  /// Get current ColorScheme based on theme
-  static ColorScheme get currentColorScheme =>
-      isDarkTheme ? darkColorScheme : lightColorScheme;
+  static LinearGradient gradient3 = const LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      Color(0xFF3E7BFA),
+      Color(0xFF6600CC),
+    ],
+  );
 
-  /// Create a ThemeData with space theme colors
-  static ThemeData createThemeData({required bool isDark}) {
-    return ThemeData(
-      useMaterial3: true,
-      brightness: isDark ? Brightness.dark : Brightness.light,
-      colorScheme: isDark ? darkColorScheme : lightColorScheme,
-      fontFamily: 'D-DIN', // Space-themed font from your assets
-    );
-  }
+  static LinearGradient gradient4 = const LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      Color(0xFF00CFDE),
+      Color(0xFF05A660),
+    ],
+  );
 
-  /// Helper method to get appropriate text color for a background
-  static Color getTextColorForBackground(Color backgroundColor) {
-    final luminance = backgroundColor.computeLuminance();
-    return luminance > 0.5 ? spaceDeepBlue : pureWhite;
-  }
+  static LinearGradient gradient5 = const LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      Color(0xFFFDDD48),
+      Color(0xFF00B7C4),
+    ],
+  );
 
-  /// Helper method to create gradient backgrounds
-  static LinearGradient get spaceGradient => LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: [spaceDeepBlue, spaceMidBlue, spaceLightBlue],
-      );
+  static LinearGradient gradient6 = const LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      Color(0xFFFDDD48),
+      Color(0xFF00B7C4),
+    ],
+  );
 
-  /// Helper method for rocket flame gradient
-  static LinearGradient get rocketFlameGradient => LinearGradient(
-        begin: Alignment.bottomCenter,
-        end: Alignment.topCenter,
-        colors: [rocketOrange, thrusterBlue, spaceCyanBlue],
-      );
+  static LinearGradient gradient7 = const LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      Color(0xFFFF3B3B),
+      Color(0xFF6600CC),
+    ],
+  );
+
+  static LinearGradient gradient8 = const LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      Color(0xFF73DFE7),
+      Color(0xFF0063F7),
+    ],
+  );
+
+  static LinearGradient gradient9 = const LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      Color(0xFFAC5DD9),
+      Color(0xFF004FC4),
+    ],
+  );
 }

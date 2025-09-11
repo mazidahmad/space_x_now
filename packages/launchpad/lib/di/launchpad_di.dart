@@ -1,6 +1,6 @@
 import 'package:space_x_now_di/di.dart';
 
-import 'launchpad_di.config.dart';
+import '../../di/launchpad_di.config.dart';
 
 @InjectableInit(
   initializerName: 'init',

@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class LaunchPad extends Equatable {
-  final List<String> images;
+  final Map<String, List<String>> images;
   final String name;
   final String fullName;
   final String locality;
@@ -60,7 +60,8 @@ class LaunchPad extends Equatable {
   bool get isUnderConstruction => status.toLowerCase() == 'under construction';
   bool get hasDetails => details != null && details!.isNotEmpty;
   bool get hasImages => images.isNotEmpty;
-  double get successRate => launchAttempts > 0 ? (launchSuccesses / launchAttempts) : 0.0;
+  double get successRate =>
+      launchAttempts > 0 ? (launchSuccesses / launchAttempts) : 0.0;
   bool get hasLaunches => launches.isNotEmpty;
   bool get supportsMultipleRockets => rockets.length > 1;
 }

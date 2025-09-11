@@ -14,6 +14,8 @@ workspace:
   - packages/ui_components
   - packages/launches
   - packages/rockets
+  - packages/launchpad
+  - packages/payload
   - packages/di
 
 dev_dependencies:
@@ -25,11 +27,27 @@ melos:
       exec: dart analyze
     format:
       run: dart format .
-    build_app:
+    build_app:clean:
       run: melos exec --scope=space_x_now_app -- "dart run build_runner clean && dart run build_runner build --delete-conflicting-outputs"
-    build_core_package:
+    build_app:
+      run: melos exec --scope=space_x_now_app -- "dart run build_runner build --delete-conflicting-outputs"
+    build_core_package:clean:
       run: melos exec --scope=space_x_now_core -- "dart run build_runner clean && dart run build_runner build --delete-conflicting-outputs"
-    build_launches_package:
+    build_core_package:
+      run: melos exec --scope=space_x_now_core -- "dart run build_runner build --delete-conflicting-outputs"
+    build_launches_package:clean:
       run: melos exec --scope=space_x_launches -- "dart run build_runner clean && dart run build_runner build --delete-conflicting-outputs"
-    build_rockets_package:
+    build_launches_package:
+      run: melos exec --scope=space_x_launches -- "dart run build_runner build --delete-conflicting-outputs"
+    build_rockets_package:clean:
       run: melos exec --scope=space_x_rockets -- "dart run build_runner clean && dart run build_runner build --delete-conflicting-outputs"
+    build_rockets_package:
+      run: melos exec --scope=space_x_rockets -- "dart run build_runner build --delete-conflicting-outputs"
+    build_launchpad_package:clean:
+      run: melos exec --scope=space_x_launchpad -- "dart run build_runner clean && dart run build_runner build --delete-conflicting-outputs"
+    build_launchpad_package:
+      run: melos exec --scope=space_x_launchpad -- "dart run build_runner build --delete-conflicting-outputs"
+    build_payload_package:clean:
+      run: melos exec --scope=space_x_payload -- "dart run build_runner clean && dart run build_runner build --delete-conflicting-outputs"
+    build_payload_package:
+      run: melos exec --scope=space_x_payload -- "dart run build_runner build --delete-conflicting-outputs"

@@ -1,5 +1,9 @@
+import 'package:space_x_launchpad/data/datasources/launchpad_remote_data_source.dart';
 import 'package:space_x_now_core/core.dart';
+import 'package:space_x_now_core/entities/query_response.dart';
 import 'package:space_x_now_di/di.dart';
+import 'package:space_x_payload/data/datasources/payload_remote_data_source.dart';
+import 'package:space_x_rockets/data/datasources/rocket_remote_data_source.dart';
 
 import '../../domain/entities/launch.dart';
 import '../../domain/repositories/launch_repository.dart';
@@ -11,10 +15,16 @@ class LaunchRepositoryImpl extends LaunchRepository with RepositoryMixin {
   final LaunchRemoteDataSource remoteDataSource =
       getIt<LaunchRemoteDataSource>();
   final LaunchLocalDataSource localDataSource = getIt<LaunchLocalDataSource>();
+  final RocketRemoteDataSource rocketRemoteDataSource =
+      getIt<RocketRemoteDataSource>();
+  final PayloadRemoteDataSource payloadRemoteDataSource =
+      getIt<PayloadRemoteDataSource>();
+  final LaunchPadRemoteDataSource launchPadRemoteDataSource =
+      getIt<LaunchPadRemoteDataSource>();
   final networkInfo = getIt<NetworkInfo>();
 
   @override
-  Future<Result<List<Launch>>> getAllLaunches() => callDataSource(
+  Future<Either<Failure, List<Launch>>> getAllLaunches() => callDataSource(
         () async {
           if (await networkInfo.isConnected) {
             final launches = await remoteDataSource.getAllLaunches();
@@ -32,7 +42,7 @@ class LaunchRepositoryImpl extends LaunchRepository with RepositoryMixin {
       );
 
   @override
-  Future<Result<Launch>> getLaunchById(String id) => callDataSource(
+  Future<Either<Failure, Launch>> getLaunchById(String id) => callDataSource(
         () async {
           if (await networkInfo.isConnected) {
             final launch = await remoteDataSource.getLaunchById(id);
@@ -50,7 +60,7 @@ class LaunchRepositoryImpl extends LaunchRepository with RepositoryMixin {
       );
 
   @override
-  Future<Result<Launch?>> getLatestLaunch() => callDataSource(
+  Future<Either<Failure, Launch?>> getLatestLaunch() => callDataSource(
         () async {
           if (await networkInfo.isConnected) {
             final launch = await remoteDataSource.getLatestLaunch();
@@ -68,7 +78,7 @@ class LaunchRepositoryImpl extends LaunchRepository with RepositoryMixin {
       );
 
   @override
-  Future<Result<Launch?>> getNextLaunch() => callDataSource(
+  Future<Either<Failure, Launch?>> getNextLaunch() => callDataSource(
         () async {
           if (await networkInfo.isConnected) {
             final launch = await remoteDataSource.getNextLaunch();
@@ -86,7 +96,7 @@ class LaunchRepositoryImpl extends LaunchRepository with RepositoryMixin {
       );
 
   @override
-  Future<Result<List<Launch>>> getPastLaunches() => callDataSource(
+  Future<Either<Failure, List<Launch>>> getPastLaunches() => callDataSource(
         () async {
           if (await networkInfo.isConnected) {
             final launches = await remoteDataSource.getPastLaunches();
@@ -99,7 +109,7 @@ class LaunchRepositoryImpl extends LaunchRepository with RepositoryMixin {
       );
 
   @override
-  Future<Result<List<Launch>>> getUpcomingLaunches() => callDataSource(
+  Future<Either<Failure, List<Launch>>> getUpcomingLaunches() => callDataSource(
         () async {
           if (await networkInfo.isConnected) {
             final launches = await remoteDataSource.getUpcomingLaunches();
@@ -112,7 +122,8 @@ class LaunchRepositoryImpl extends LaunchRepository with RepositoryMixin {
       );
 
   @override
-  Future<Result<List<Launch>>> queryLaunches(Map<String, dynamic> query) =>
+  Future<Either<Failure, QueryResponse<Launch>>> queryLaunches(
+          Map<String, dynamic> query) =>
       callDataSource(
         () async {
           if (await networkInfo.isConnected) {

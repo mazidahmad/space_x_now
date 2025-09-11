@@ -10,9 +10,22 @@ dependencies:
   flutter:
     sdk: flutter
   
+  # Fonts
+  google_fonts: ^6.3.1
+
+  # Image caching & placeholders
+  cached_network_image: ^3.4.1
+  flutter_svg: ^2.2.1
+
   # UI & Icons
   cupertino_icons: ^1.0.8
-  iconsax_flutter: ^1.0.1
+  font_awesome_flutter: ^10.10.0
+
+  # Loading & Shimmer effects
+  shimmer: ^3.0.0
+
+  # Layout & Spacing
+  gap: ^3.0.1
 
   # Toast & Notifications
   toastification: ^3.0.3
@@ -23,20 +36,11 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^6.0.0
 
-assets:
-    - assets/fonts/
-    - assets/images/
-    - assets/images/illustrations/
-    - assets/icons/
-    - assets/lotties/
-
 flutter:
   uses-material-design: true
-  
-  fonts:
-    - family: D-DIN
-      fonts:
-        - asset: assets/fonts/ddin/D-DIN.otf
-        - asset: assets/fonts/ddin/D-DIN-Bold.otf
+
+  assets:
+    - assets/images/
+    - assets/images/logo/
 
 resolution: workspace

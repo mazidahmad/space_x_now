@@ -7,6 +7,12 @@ class CachedKeys {
   static const String latestLaunch = 'latest_launch';
   static const String nextLaunch = 'next_launch';
 
+  // Payloads
+  static const String payloads = 'payloads';
+
+  // Launchpad
+  static const String launchpads = 'launchpads';
+
   // Rockets
   static const String rockets = 'rockets';
 }

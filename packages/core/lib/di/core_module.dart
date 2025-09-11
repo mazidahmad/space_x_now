@@ -5,6 +5,7 @@ import '../env/app_env.dart';
 import '../modules/http_module.dart';
 import '../services/global_service.dart';
 import '../storages/cached_storage.dart';
+import '../storages/local_storage.dart';
 
 @module
 abstract class CoreModule {
@@ -19,4 +20,7 @@ abstract class CoreModule {
 
   @LazySingleton()
   CachedStorage get cachedStorage => CachedStorage()..init(BoxName.appCache);
+
+  @LazySingleton()
+  LocalStorage get localStorage => LocalStorage()..init();
 }

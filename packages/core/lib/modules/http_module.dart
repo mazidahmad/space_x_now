@@ -43,12 +43,8 @@ class HttpModule {
       }
 
       var code = result.statusCode;
-      var message = result.data['message'];
-      var data = result.data['data'] ?? result.data;
-
-      if (data is! bool && data['data'] is! List) {
-        data = data['data'] ?? data;
-      }
+      var message = result.statusMessage ?? '-';
+      var data = result.data;
 
       if (code == null) {
         throw ClientException(errMessage: message);
@@ -67,7 +63,7 @@ class HttpModule {
           code: result.statusCode ?? code,
           status: ResponseStatus.success,
           data: data,
-          message: result.statusMessage ?? message ?? AppStrings.successString);
+          message: result.statusMessage ?? message);
     } on DioException catch (err) {
       String message = AppStrings.generalErrorMessage;
       try {

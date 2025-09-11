@@ -21,10 +21,9 @@ class LaunchLocalDataSourceImpl extends LaunchLocalDataSource {
 
   @override
   Future<List<LaunchModel>> getCachedLaunches() async {
-    final cached =
-        await cachedStorage.read<List<LaunchModel>>(CachedKeys.launches);
-    if (cached != null) {
-      return cached;
+    final jsonData = await cachedStorage.read(CachedKeys.launches);
+    if (jsonData != null) {
+      return (jsonData as List).map((e) => LaunchModel.fromJson(e)).toList();
     } else {
       throw const CacheException();
     }
@@ -32,7 +31,8 @@ class LaunchLocalDataSourceImpl extends LaunchLocalDataSource {
 
   @override
   Future<void> cacheLaunches(List<LaunchModel> launches) async {
-    await cachedStorage.save<List<LaunchModel>>(CachedKeys.launches, launches);
+    var jsonData = launches.map((e) => e.toJson()).toList();
+    await cachedStorage.save(CachedKeys.launches, jsonData);
   }
 
   @override

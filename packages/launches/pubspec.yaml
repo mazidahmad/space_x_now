@@ -15,6 +15,16 @@ dependencies:
   space_x_now_core:
     path: ../core
 
+  # Launchpad
+  space_x_launchpad:
+    path: ../launchpad
+  # Payload
+  space_x_payload:
+    path: ../payload
+  # Rockets
+  space_x_rockets:
+    path: ../rockets
+
   # Shared UI components
   space_x_now_ui_components:
     path: ../ui_components
