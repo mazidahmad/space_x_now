@@ -1,0 +1,31 @@
+name: space_x_launchpad
+description: Feature of Launchpad for SpaceX Now app
+version: 1.0.0
+publish_to: 'none'
+
+environment:
+  sdk: ">=3.6.1 <4.0.0"
+  flutter: ">=3.24.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Core
+  space_x_now_core:
+    path: ../core
+
+  # Dependency Injection
+  space_x_now_di:
+    path: ../di
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  injectable_generator: ^2.8.1
+
+flutter:
+  uses-material-design: true
+
+resolution: workspace
